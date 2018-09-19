@@ -9,6 +9,10 @@ html, body, .container {
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
   }
+  .tree {
+    width: 60%;
+    float: left;
+  }
   .controls { 
     width: 37%;
     height: 100%;
