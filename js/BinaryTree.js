@@ -70,3 +70,16 @@ function bfs(node, x) {
             stack.push(c.right)
     } 
 }
+
+if(typeof exports == 'undefined'){
+    var module = this['mymodule'] = {};
+}
+
+module.exports = {
+    bfs, 
+    BinaryTree,
+    inorder,
+    postorder,
+    preorder,
+    Node
+};
