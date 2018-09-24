@@ -2,13 +2,19 @@ $(document).ready(function () {
     var bt = new BinaryTree();
     var currFunction = inorder;
     var initialized = false;
-    $("svg").find("text").each(function (s) {
-        bt.push(Number($(this).text()));
+
+    var elIds = $("svg ellipse")
+        .map(function() { return this.id; })
+        .get();
+    
+    $("svg").find("text").each(function ( s ) {
+        bt.push(Number($(this).text()), elIds[s]);
     });
 
     function traverse() {
         var x = []
-        currFunction(bt.root, x);
+        elIds = []
+        currFunction(bt.root, x, elIds);
         var element = $(".traversal");
         element.html("");
         x.forEach(function (e){

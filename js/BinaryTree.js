@@ -1,7 +1,7 @@
-BinaryTree.prototype.push = function (val) {
+BinaryTree.prototype.push = function (val, elId) {
     var root = this.root;
     if (!root) {
-        this.root = new Node(val);
+        this.root = new Node(val, elId);
         return;
     }
     q = []
@@ -9,61 +9,67 @@ BinaryTree.prototype.push = function (val) {
     while (q.length != 0) { 
         var temp = q.shift(); 
         if (temp.left == null) { 
-            temp.left = new Node(val); 
+            temp.left = new Node(val, elId); 
             break; 
         } else
             q.push(temp.left); 
         if (temp.right == null) { 
-            temp.right = new Node(val); 
+            temp.right = new Node(val, elId); 
             break; 
         } else
             q.push(temp.right); 
     } 
 };
 
-function Node(val) {
+function Node(val, elId) {
     this.value = val;
     this.left = null;
     this.right = null;
+    this.elId = elId;
 }
 function BinaryTree() {
     this.root = null;
 }
-function dfs(node, x) {
+function dfs(node, x, y) {
     if (node) {
         x.push(node.value);
-        dfs(node.left, x);
-        dfs(node.right, x);
+        y.push(node.elId);
+        dfs(node.left, x, y);
+        dfs(node.right, x, y);
     }
 }
-function inorder(node, x) {
+function inorder(node, x, y) {
     if (node) {
-        inorder(node.left, x);
+        inorder(node.left, x, y);
         x.push(node.value);
-        inorder(node.right, x);
+        y.push(node.elId);
+        inorder(node.right, x, y);
     }
 }
-function postorder(node, x) {
+function postorder(node, x, y) {
     if (node) {
-        postorder(node.left, x);
-        postorder(node.right, x);
+        postorder(node.left, x, y);
+        postorder(node.right, x, y);
         x.push(node.value);
+        y.push(node.elId);
     }
 }
-function preorder(node, x) {
+function preorder(node, x, y) {
     if (node) {
         x.push(node.value);
-        preorder(node.left, x);
-        preorder(node.right, x);
+        y.push(node.elId);
+        preorder(node.left, x, y);
+        preorder(node.right, x, y);
     }
 }
-function bfs(node, x) {
+function bfs(node, x, y) {
     if (!node) return;
     var stack = []
     stack.push(node);
     while (stack.length != 0) {
         var c = stack.shift();
         x.push(c.value);
+        y.push(c.elId);
         if (c.left != null)
             stack.push(c.left)
         if (c.right != null)
