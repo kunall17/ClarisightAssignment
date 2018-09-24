@@ -32,6 +32,9 @@ $(document).ready(function () {
 
     $('#play-btn').click(function() {
         if (!initialized) traverse();
+
+        $("svg").find("ellipse").attr("fill", "#fff");
+
         $(".traversal span").each(function(i,e) {
             $(this).css({opacity: 0});
         });
@@ -41,11 +44,18 @@ $(document).ready(function () {
             opacity: 1,
           }, 2000);
          });
+
+        elIds.forEach(function (i,e ) {
+            $("#" + i).delay(e*2000).animate({
+                svgFill: '#e67e22',
+            }, 1000);
+        });
     });
 
     $('#pause-btn').click(function() {
         $(".traversal span").each(function(i,e) {
             $(this).stop().css({opacity: 1});
         });
+        $("ellipse").stop();
     })
 });
