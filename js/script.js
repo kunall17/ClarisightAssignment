@@ -35,9 +35,7 @@ $(document).ready(function () {
 
         $("svg").find("ellipse").attr("fill", "#fff");
 
-        $(".traversal span").each(function(i,e) {
-            $(this).css({opacity: 0});
-        });
+        $(".traversal span").css({ opacity: 0 });
         
          $(".traversal span").each(function (i,e ) {
            $(this).delay(i*2000).animate({
@@ -53,9 +51,7 @@ $(document).ready(function () {
     });
 
     $('#pause-btn').click(function() {
-        $(".traversal span").each(function(i,e) {
-            $(this).stop().css({opacity: 1});
-        });
+        $(".traversal span").stop().css({opacity: 1});
         $("ellipse").stop();
     })
 });
