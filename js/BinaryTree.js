@@ -5,20 +5,20 @@ BinaryTree.prototype.push = function (val, elId) {
         return;
     }
     q = []
-    q.push(root); 
-    while (q.length != 0) { 
-        var temp = q.shift(); 
-        if (temp.left == null) { 
-            temp.left = new Node(val, elId); 
-            break; 
+    q.push(root);
+    while (q.length != 0) {
+        var temp = q.shift();
+        if (temp.left == null) {
+            temp.left = new Node(val, elId);
+            break;
         } else
-            q.push(temp.left); 
-        if (temp.right == null) { 
-            temp.right = new Node(val, elId); 
-            break; 
+            q.push(temp.left);
+        if (temp.right == null) {
+            temp.right = new Node(val, elId);
+            break;
         } else
-            q.push(temp.right); 
-    } 
+            q.push(temp.right);
+    }
 };
 
 function Node(val, elId) {
@@ -74,15 +74,15 @@ function bfs(node, x, y) {
             stack.push(c.left)
         if (c.right != null)
             stack.push(c.right)
-    } 
+    }
 }
 
-if(typeof exports == 'undefined'){
+if (typeof exports == 'undefined') {
     var module = this['mymodule'] = {};
 }
 
 module.exports = {
-    bfs, 
+    bfs,
     BinaryTree,
     inorder,
     postorder,

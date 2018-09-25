@@ -1,4 +1,4 @@
-const { 
+const {
   BinaryTree,
   inorder,
   postorder,
@@ -13,7 +13,7 @@ bt.push(3, "c");
 bt.push(4, "d");
 bt.push(5, "e");
 
-describe('Test traversals' , () => {
+describe('Test traversals', () => {
   test('Test inorder', () => {
     var x = [];
     var y = [];
@@ -29,7 +29,7 @@ describe('Test traversals' , () => {
     expect(x).toEqual([1, 2, 4, 5, 3]);
     expect(y).toEqual(["a", "b", "d", "e", "c"]);
   });
-  
+
   test('Test postorder', () => {
     var x = [];
     var y = [];
